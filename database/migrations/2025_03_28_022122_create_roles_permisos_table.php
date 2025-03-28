@@ -8,7 +8,7 @@ return new class extends Migration {
     public function up() {
         Schema::create('roles_permisos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('idUsuarioPermiso')->constrained('usuarios')->onDelete('cascade');
+            $table->foreignId('idUsuarioPermiso')->constrained('users')->onDelete('cascade');
             $table->string('permiso', 50);
             $table->timestamps();
         });
