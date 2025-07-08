@@ -3,84 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <title>Registro</title>
-
-    <!-- MDB CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css" rel="stylesheet" />
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-    <style>
-        .card-body {
-            font-size: 1.1rem;
-        }
-        .form-label {
-            font-size: 1.05rem;
-        }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-gradient-to-br from-blue-100 to-indigo-200 min-h-screen flex items-center justify-center">
 
-<section class="text-center">
-    <!-- Background -->
-    <div class="p-5 bg-image" style="
-        background-image: url('https://mdbootstrap.com/img/new/textures/full/171.jpg');
-        height: 300px;"></div>
+    <div class="bg-white shadow-2xl rounded-2xl p-8 max-w-md w-full">
+        <h2 class="text-3xl font-bold text-center mb-6 text-indigo-700">Registro</h2>
 
-    <div class="container d-flex justify-content-center">
-        <div class="card shadow-5-strong bg-body-tertiary"
-             style="margin-top: -100px; backdrop-filter: blur(30px); max-width: 800px; width: 100%;">
-            <div class="card-body py-5 px-md-5">
-
-                <div class="row d-flex justify-content-center">
-                    <div class="col-lg-6">
-                        <h2 class="fw-bold mb-5">Registro</h2>
-
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                {{ $errors->first() }}
-                            </div>
-                        @endif
-
-                        <form method="POST" action="{{ url('/register') }}">
-                            @csrf
-
-                            <div class="form-outline mb-4">
-                                <input type="text" id="name" name="name" class="form-control form-control-lg" required />
-                                <label class="form-label" for="name">Nombre</label>
-                            </div>
-
-                            <div class="form-outline mb-4">
-                                <input type="email" id="email" name="email" class="form-control form-control-lg" required />
-                                <label class="form-label" for="email">Correo electrónico</label>
-                            </div>
-
-                            <div class="form-outline mb-4">
-                                <input type="password" id="password" name="password" class="form-control form-control-lg" required />
-                                <label class="form-label" for="password">Contraseña</label>
-                            </div>
-
-                            <div class="form-outline mb-4">
-                                <input type="password" id="password_confirmation" name="password_confirmation" class="form-control form-control-lg" required />
-                                <label class="form-label" for="password_confirmation">Confirmar contraseña</label>
-                            </div>
-
-                            <button type="submit" class="btn btn-primary btn-block mb-4">
-                                Registrarse
-                            </button>
-
-                            <div class="text-center">
-                                <p>¿Ya tienes cuenta? <a href="{{ route('login') }}">Inicia sesión</a></p>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
+        @if ($errors->any())
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+                {{ $errors->first() }}
             </div>
-        </div>
-    </div>
-</section>
+        @endif
 
-<!-- MDB JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
+        <form method="POST" action="{{ url('/register') }}">
+            @csrf
+
+            <div class="mb-4">
+                <label for="name" class="block text-gray-700 font-semibold mb-1">Nombre</label>
+                <input type="text" id="name" name="name" required
+                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400">
+            </div>
+
+            <div class="mb-4">
+                <label for="email" class="block text-gray-700 font-semibold mb-1">Correo electrónico</label>
+                <input type="email" id="email" name="email" required
+                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400">
+            </div>
+
+            <div class="mb-4">
+                <label for="password" class="block text-gray-700 font-semibold mb-1">Contraseña</label>
+                <input type="password" id="password" name="password" required
+                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400">
+            </div>
+
+            <div class="mb-6">
+                <label for="password_confirmation" class="block text-gray-700 font-semibold mb-1">Confirmar contraseña</label>
+                <input type="password" id="password_confirmation" name="password_confirmation" required
+                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400">
+            </div>
+
+            <button type="submit"
+                    class="w-full bg-indigo-600 text-white font-semibold py-2 rounded-lg hover:bg-indigo-700 transition">
+                Registrarse
+            </button>
+
+            <p class="mt-4 text-center text-sm text-gray-600">
+                ¿Ya tienes cuenta?
+                <a href="{{ route('login') }}" class="text-indigo-600 hover:underline font-medium">Inicia sesión</a>
+            </p>
+        </form>
+    </div>
+
 </body>
 </html>
